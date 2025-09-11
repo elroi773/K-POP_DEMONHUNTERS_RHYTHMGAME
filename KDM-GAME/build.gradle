@@ -9,7 +9,7 @@ javafx {
 }
 
 application {
-    mainClass = 'Main'
+    mainClassName = 'Main'
 }
 repositories {
     mavenCentral()
