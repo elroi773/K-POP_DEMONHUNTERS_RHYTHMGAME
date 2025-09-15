@@ -65,3 +65,11 @@ public class Main extends Application {
         launch(args);
     }
 }
+
+// javac --module-path "C:\javafx-sdk-17.0.16\lib" `
+//   --add-modules javafx.controls,javafx.fxml,javafx.media `
+//   -encoding UTF-8 -d ../out *.java
+
+// java --module-path "C:\javafx-sdk-17.0.16\lib" `
+//   --add-modules javafx.controls,javafx.fxml,javafx.media `
+//   -cp "../out;../resources" Main
