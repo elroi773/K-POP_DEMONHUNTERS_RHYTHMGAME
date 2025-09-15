@@ -8,6 +8,7 @@ import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class SelectSongSimple extends Application {
 
@@ -43,9 +44,9 @@ public class SelectSongSimple extends Application {
         HBox songBox = new HBox(30);
         songBox.setAlignment(Pos.CENTER);
 
-        // 샘플 곡 2개
-        ImageView song1Img = createSongImage("/img/Golden.png", "/music/Golden.mp3");
-        ImageView song2Img = createSongImage("/img/HowItsDone.png", "/music/HowItsDone.mp3");
+        // 샘플 곡 2개 (하이라이트 구간 지정)
+        ImageView song1Img = createSongImage("/img/Golden.png", "/music/Golden.mp3", 30, 60);
+        ImageView song2Img = createSongImage("/img/HowItsDone.png", "/music/HowItsDone.mp3", 15, 45);
 
         songBox.getChildren().addAll(song1Img, song2Img);
         root.setCenter(songBox);
@@ -56,8 +57,15 @@ public class SelectSongSimple extends Application {
         stage.show();
     }
 
-    // 이미지 클릭하면 바로 재생
-    private ImageView createSongImage(String imagePath, String musicPath) {
+    /**
+     * 이미지 클릭 시 지정 구간만 재생하는 메서드
+     * @param imagePath 이미지 경로
+     * @param musicPath 음악 파일 경로
+     * @param highlightStart 하이라이트 시작 시간(초)
+     * @param highlightEnd 하이라이트 종료 시간(초)
+     * @return ImageView
+     */
+    private ImageView createSongImage(String imagePath, String musicPath, double highlightStart, double highlightEnd) {
         Image img = new Image(getClass().getResource(imagePath).toExternalForm());
         ImageView imageView = new ImageView(img);
         imageView.setFitWidth(150);
@@ -67,7 +75,28 @@ public class SelectSongSimple extends Application {
             stopCurrentPlayer(); // 이전 재생 종료
             Media media = new Media(getClass().getResource(musicPath).toExternalForm());
             currentPlayer = new MediaPlayer(media);
-            currentPlayer.play(); // 바로 재생
+
+            Duration start = Duration.seconds(highlightStart);
+            Duration end = Duration.seconds(highlightEnd);
+
+            // MediaPlayer 준비 완료 후 실행
+            currentPlayer.setOnReady(() -> {
+                if (currentPlayer == null) return; // 안전 체크
+                currentPlayer.seek(start);
+                currentPlayer.play();
+
+                // 재생 구간 체크
+                currentPlayer.currentTimeProperty().addListener((obs, oldTime, newTime) -> {
+                    if (newTime.greaterThanOrEqualTo(end)) {
+                        stopCurrentPlayer();
+                    }
+                });
+            });
+
+            // 혹시 준비 실패 시
+            currentPlayer.setOnError(() -> {
+                System.out.println("MediaPlayer Error: " + currentPlayer.getError());
+            });
         });
 
         return imageView;
