@@ -58,7 +58,7 @@ public class Main extends Application {
         primaryStage.show();
 
         // OST 재생
-        MusicPlayer.play("../resources/music/HowIt'sdone.mp3", true);
+        // MusicPlayer.play("../resources/music/HowIt'sdone.mp3", true);
     }
 
     public static void main(String[] args) {
