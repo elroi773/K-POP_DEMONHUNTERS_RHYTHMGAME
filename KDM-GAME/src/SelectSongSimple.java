@@ -30,7 +30,7 @@ public class SelectSongSimple extends Application {
             );
             root.setBackground(new Background(bgImage));
         } catch (Exception e) {
-            System.out.println("배경 이미지 로드 실패");
+            System.out.println("배경 이미지 로드 실패: " + e.getMessage());
         }
 
         // 뒤로가기 버튼
@@ -44,11 +44,12 @@ public class SelectSongSimple extends Application {
         HBox songBox = new HBox(30);
         songBox.setAlignment(Pos.CENTER);
 
-        // 샘플 곡 2개 (하이라이트 구간 지정)
-        ImageView song1Img = createSongImage("/img/Golden.png", "/music/Golden.mp3", 30, 60);
-        ImageView song2Img = createSongImage("/img/HowItsDone.png", "/music/HowItsDone.mp3", 15, 45);
+        // 🎵 샘플 곡 2개 (파일명 안전하게, 경로는 resources 기준으로)
+        ImageView song1Img = createSongImage("/img/Golden.png", "/music/preview/Golden_preview.mp3");
+        ImageView song2Img = createSongImage("/img/Howitsdone.png", "/music/preview/Howitsdone_preview.mp3");
+        ImageView song3Img = createSongImage("/img/Howitsdone.png", "/music/preview/Howitsdone_preview.mp3");
 
-        songBox.getChildren().addAll(song1Img, song2Img);
+        songBox.getChildren().addAll(song1Img, song2Img,song3Img);
         root.setCenter(songBox);
 
         Scene scene = new Scene(root, 800, 600);
@@ -100,6 +101,13 @@ public class SelectSongSimple extends Application {
         });
 
         return imageView;
+    }
+
+    /**
+     * 오버로딩: 하이라이트 구간 기본값 (30초 ~ 45초)
+     */
+    private ImageView createSongImage(String imagePath, String musicPath) {
+        return createSongImage(imagePath, musicPath, 30, 45);
     }
 
     private void stopCurrentPlayer() {
