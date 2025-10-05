@@ -37,7 +37,7 @@ public class SelectSong extends Application {
     private final SongData[] songs = {
         new SongData("Free", "../resources/img/Free.png", "../resources/music/preview/Free_preview.mp3", Free.class),
         new SongData("Golden", "../resources/img/Golden.png", "../resources/music/preview/Golden_preview.mp3", Golden.class),
-        new SongData("How It’s Done", "../resources/img/How_Its_Done.png", "../resources/music/preview/HowItsdone_preview.mp3", How_Its_done.class),
+        new SongData("How Its Done", "../resources/img/How_Its_Done.png", "../resources/music/preview/HowItsdone_preview.mp3", How_Its_done.class),
         new SongData("Your Idol", "../resources/img/Your_idol.png", "../resources/music/preview/your_idol_preview.mp3", YourIdol.class),
         new SongData("What It Sounds Like", "../resources/img/What_It_Sounds_Like.png", "../resources/music/preview/what_it_sounds_like_preview.mp3", What_It_Sounds_like.class),
         new SongData("Soda Pop", "../resources/img/Soda_Pop.png", "../resources/music/preview/soda_pop_preview.mp3", SodaPop.class)
