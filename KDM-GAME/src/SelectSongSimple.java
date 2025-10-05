@@ -20,8 +20,8 @@ public class SelectSongSimple extends Application {
 
         // 배경 이미지
         try {
-            Image bgImg = new Image(getClass().getResource("/img/Select_song_background.png").toExternalForm());
-            BackgroundImage bgImage = new BackgroundImage(
+            Image bgImg = new Image(getClass().getResource("").toExternalForm());
+            BackgroundImage bgImage = new BackgroundImage(../resources/img/Select_song_background.png
                     bgImg,
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundRepeat.NO_REPEAT,
