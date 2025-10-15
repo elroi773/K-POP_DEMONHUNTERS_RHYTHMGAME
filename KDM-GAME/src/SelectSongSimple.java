@@ -21,13 +21,14 @@ public class SelectSongSimple extends Application {
         // 배경 이미지
         try {
             Image bgImg = new Image(getClass().getResource("").toExternalForm());
-            BackgroundImage bgImage = new BackgroundImage(../resources/img/Select_song_background.png
-                    bgImg,
-                    BackgroundRepeat.NO_REPEAT,
-                    BackgroundRepeat.NO_REPEAT,
-                    BackgroundPosition.CENTER,
-                    new BackgroundSize(800, 600, false, false, false, false)
+            BackgroundImage bgImage = new BackgroundImage(
+                new Image("file:../resources/img/Select_song_background.png"),
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                new BackgroundSize(800, 600, false, false, false, false)
             );
+
             root.setBackground(new Background(bgImage));
         } catch (Exception e) {
             System.out.println("배경 이미지 로드 실패: " + e.getMessage());
