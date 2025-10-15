@@ -16,13 +16,14 @@ public class Main extends Application {
 
         // 배경 이미지
         BackgroundImage bgImage = new BackgroundImage(
-                new Image("file:../resources/img/background.png"),
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                new BackgroundSize(800, 600, false, false, false, false)
+            new Image(getClass().getResource("/img/Select_song_background.png").toExternalForm()),
+            BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT,
+            BackgroundPosition.CENTER,
+            new BackgroundSize(800, 600, false, false, false, false)
         );
         root.setBackground(new Background(bgImage));
+        
 
         // 타이틀 텍스트
         Text title = new Text("K-POP DEMON HUNTERS - Rhythm Game");
@@ -46,7 +47,7 @@ public class Main extends Application {
 
         // 버튼 이벤트 → SelectSong 화면으로 전환
         selectSongBtn.setOnAction(e -> {
-            new SelectSong().show(primaryStage);
+            new SelectSong().start(primaryStage);
         });
 
         // 씬
@@ -66,10 +67,5 @@ public class Main extends Application {
     }
 }
 
-// javac --module-path "C:\javafx-sdk-17.0.16\lib" `
-//   --add-modules javafx.controls,javafx.fxml,javafx.media `
-//   -encoding UTF-8 -d ../out *.java
-
-// java --module-path "C:\javafx-sdk-17.0.16\lib" `
-//   --add-modules javafx.controls,javafx.fxml,javafx.media `
-//   -cp "../out;../resources" Main
+// javac --module-path "C:\javafx-sdk-17.0.16\lib" --add-modules javafx.controls,javafx.fxml,javafx.media -encoding UTF-8 -d ../out *.java
+// java --module-path "C:\javafx-sdk-17.0.16\lib" --add-modules javafx.controls,javafx.fxml,javafx.media -cp "../out;../resources" Main
