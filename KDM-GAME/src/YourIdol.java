@@ -19,8 +19,8 @@ public class YourIdol extends Application {
         // --- 배경 이미지 설정 ---
         Image backgroundImage = new Image(new File("../resources/img/game_Background/YourIdol_Background.png").toURI().toString());
         ImageView backgroundView = new ImageView(backgroundImage);
-        backgroundView.setFitWidth(400); // 창 크기에 맞게 조정
-        backgroundView.setFitHeight(300);
+        backgroundView.setFitWidth(800); // 창 크기에 맞게 조정
+        backgroundView.setFitHeight(600);
         backgroundView.setPreserveRatio(false);
 
         // --- UI 구성 ---
@@ -59,7 +59,7 @@ public class YourIdol extends Application {
 
         // --- Stage 설정 ---
         stage.setTitle("YourIdol");
-        stage.setScene(new Scene(root, 400, 300));
+        stage.setScene(new Scene(root, 800, 600));
         stage.show();
     }
 

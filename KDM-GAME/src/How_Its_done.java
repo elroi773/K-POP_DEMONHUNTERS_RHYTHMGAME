@@ -59,7 +59,7 @@ public class How_Its_done extends Application {
 
         // --- Stage 설정 ---
         stage.setTitle("How_Its_done");
-        stage.setScene(new Scene(root, 400, 300));
+        stage.setScene(new Scene(root, 800, 600));
         stage.show();
     }
 
